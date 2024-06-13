@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat Page</title>
+    <style>
+      body {
+        font-family: chakra petch;
+        display: flex;
+        /* align-items: center; */
+        flex-direction: column;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        background-position: center;
+        background-image: url(1216348.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+      #sending-box{
+        width: 100vw;
+        height: 55px;
+        position: fixed;
+        display: flex;
+        bottom: 25px;
+        background-color: rgba(255, 255, 255, 0);
+      }
+      input[type="text"]{
+        
+        display:inline-block;
+        height: 50px;
+        width: 75vw;
+        padding-left: 2.5vw;
+        padding-right: 2.5vw;
+        margin-left:2vw;
+        background-color: rgb(1, 23, 34);
+        border: 2px solid white;
+        color: white;
+        border-radius: 25px;
+      }
+      #header{
+        position: fixed;
+        display: flex;
+        width: 100vw;
+        height:90px;
+        background-color: rgb(189, 254, 252);
+      }
+      #receiver-name{
+        display: flex;
+        position: fixed;
+        justify-content: left;
+        align-items: center;
+        width: fit-content;
+        height: 55px;
+        margin-top: 10px;
+       align-self: center;
+       left: 50%;
+       transform: translateX(-50%);
+       padding-left: 10vw;
+        padding-right: 10vw;
+        border-radius: 25px;
+        font-size: 2rem;
+        /* text-shadow: 0px 0px 5px #ffffff; */
+       border: 2px solid #d900ff;
+        background-color:rgba(255, 255, 255, 0.103);
+        box-shadow: 0px 0px 5px #d900ff;
+        color: #d900ff;
+        cursor: default;
+      }
+      #message-box{
+        position: absolute;
+        display: grid;
+        grid-row: auto;
+        grid-column: 1;
+        padding-bottom: 90px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 95vw;
+        height: fit-content;
+        background-color: transparent;
+        margin-top: 90px;
+        margin-bottom: 90px;
+        z-index: -1;
+      }
+      .message{
+        display: flex;
+        border-radius: 25px;
+        padding-left: 25px;
+        padding-right: 25px;
+        width: fit-content;
+        cursor: default;
+        margin-bottom: 10px;
+        height: 40px;
+        z-index: -1;
+        align-items: center;
+      }
+      .sendedMessage{
+        background-color: #7fff5195;
+        color: rgb(255, 255, 255);
+        justify-self: right;
+      }
+      .receivedMessage{
+        
+        background-color: #ffffff74;
+        color: rgb(0, 0, 0);
+        justify-self: left;
+      }
+      #send{
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        color: rgb(0, 208, 255);
+        border: 2px solid rgb(0, 208, 255);
+        background-color: rgb(1, 23, 34);
+        height: 50px;
+        width: 15vw;
+        margin-left: 1vw;
+        margin-right: 2vw;
+        transition: 0.5s;
+        cursor: pointer;
+        border-radius: 25px;
+      }
+      #send:hover{
+        color: white;
+        border:2px solid white;
+        background-color: rgb(0, 175, 214);
+      }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="header">
+      <div id="receiver-name"></div>
+    </div>
+    
+    <div id="message-box">
+    </div>
+      <div id="sending-box">
+        <input id="text" type="text" placeholder="Type a message" />
+        <div id="send">send</div>
+      </div>
+     <script src="message.js"></script>
+  </body>
+</html>
