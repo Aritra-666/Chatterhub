@@ -73,7 +73,23 @@
 
 
 
+ document.querySelector('.more-icon').addEventListener('click',()=>{
 
+ if(document.getElementById('dropdown-content').style.display =='grid') {
+
+  document.getElementById('dropdown-content').style.display='none'
+  document.getElementById('more').style.display='grid'
+  document.getElementById('cross-icon').style.display='none'
+
+ }else{
+  document.getElementById('dropdown-content').style.display='grid'
+  document.getElementById('more').style.display='none'
+  document.getElementById('cross-icon').style.display='flex'
+ }
+
+
+
+ })
 
 
 
