@@ -20,7 +20,7 @@ var OTP;
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 })
-app.listen(5000, () => console.log('listening on port 3000'))
+app.listen(3000, () => console.log('listening on port 3000'))
 
 app.use(express.static("public"))
 
