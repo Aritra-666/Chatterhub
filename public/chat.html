@@ -69,7 +69,7 @@
         transition: 0.5s;
         z-index: 1;
       }
-      .chat:hover{
+      .chat:hover {
         background-color: rgba(39, 9, 191, 0.314);
         box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.638);
         width: 80vw;
@@ -91,7 +91,7 @@
         );
         z-index: 2;
       }
-  
+
       h3 {
         width: fit-content;
         font-size: 2em;
@@ -109,7 +109,7 @@
         height: 75px;
         bottom: 50px;
       }
-  
+
       .message-icon {
         position: absolute;
         left: 50%;
@@ -196,81 +196,78 @@
       }
       #cross-icon {
         display: none;
-      position: relative;
-      width: 50px;
-      height: 50px;
-    }
-    #cross-icon::before,
-    #cross-icon::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 30px; 
-      height: 5px; 
-      background-color: rgb(0, 221, 203);
-    }
-  #cross-icon::before {
-      transform: translate(-50%, -50%) rotate(45deg);
-    }
-    #cross-icon::after {
-      transform: translate(-50%, -50%) rotate(-45deg);
-    }
-      #dropdown-content{
+        position: relative;
+        width: 50px;
+        height: 50px;
+      }
+      #cross-icon::before,
+      #cross-icon::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 30px;
+        height: 5px;
+        background-color: rgb(0, 221, 203);
+      }
+      #cross-icon::before {
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+      #cross-icon::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+      #dropdown-content {
         display: none;
         justify-content: center;
         position: fixed;
-        top: 90px;
+        top: 100px;
         right: 25px;
         height: fit-content;
         width: 200px;
         font-size: 1rem;
         background-color: #000000db;
         border-radius: 25px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.833) ;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.833);
         z-index: 2;
       }
-      #dropdown-content a {
+      .dropList {
         display: grid;
         justify-content: center;
         text-decoration: none;
         margin-bottom: 15px;
         margin-top: 15px;
-        border: 1px solid rgb(1, 255, 98);
-        color:rgb(1, 255, 98) ;
+        border: 1px solid rgb(112, 93, 255);
+        color: rgb(112, 93, 255);
         border-radius: 25px;
         padding: 5px;
         padding-left: 20px;
         padding-right: 20px;
         transition: 0.5s;
       }
-      #dropdown-content span{
+      #logOutBtn {
         display: grid;
         justify-content: center;
         text-decoration: none;
         margin-bottom: 15px;
         margin-top: 15px;
         border: 1px solid rgb(255, 39, 1);
-        color:rgb(255, 39, 1) ;
+        color: rgb(255, 39, 1);
         border-radius: 25px;
         padding: 5px;
         padding-left: 20px;
         padding-right: 20px;
         transition: 0.5s;
       }
-      #dropdown-content a:hover {
-        padding: 10px;
-        padding-left: 30px;
-        padding-right: 30px;
-        box-shadow: 0px 0px 20px rgb(1, 255, 98) ;
+      #logOutBtn:hover { 
+       
+        box-shadow: 0px 0px 20px rgb(255, 39, 1);
+        text-shadow: 0px 0px 20px rgb(252, 104, 78); 
+      } 
+        .dropList:hover {
+        box-shadow: 0px 0px 20px rgb(1, 145, 255);
+        text-shadow: 0px 0px 10px rgb(1, 145, 255);
       }
-      #dropdown-content span:hover{
-        padding: 10px;
-        padding-left: 30px;
-        padding-right: 30px;
-        box-shadow: 0px 0px 20px rgb(255, 39, 1) ;
-      }
-
+   
     </style>
   </head>
   <body>
@@ -291,11 +288,12 @@
       </div>
     </div>
     <div id="dropdown-content">
-      <a href="log.html">Switch account</a>
-      <a href="contact.html">Contact us</a>
-      <a href="about.html">About us</a>
-      <span id="logOutBtn">Log out</span>
-  </div>
+      <a class="dropList" href="log.html">Switch account</a>
+
+      <a class="dropList" href="contact.html">Contact us</a>
+      <a class="dropList" href="about.html">About us</a>
+      <span  id="logOutBtn">Log out</span>
+    </div>
 
     <div id="chats">
       <!-- <div class="chat">dfh</div> -->
