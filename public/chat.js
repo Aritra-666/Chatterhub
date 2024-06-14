@@ -62,13 +62,12 @@
       });
 
       box.style.display = 'inline-block';
-      welcomeBox.style.display = 'none';
+     
     })
     .catch((error) => {
       console.error('Error fetching chats:', error);
     });
 
-    welcomeBox.style.display = 'none';
   });
 
 
@@ -91,54 +90,16 @@
 
  })
 
+document.getElementById('logOutBtn').addEventListener('click',()=>{
+
+  if(confirm("Are you sure to log out from your current account")){
+
+    localStorage.removeItem("user")
+    document.cookie = "user=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    window.location.assign("index.html");
+
+  }
+  
+})
 
 
-
-// document.addEventListener('DOMContentLoaded',()=>{
-
-  
-//   document.getElementById('start').addEventListener("click", () => {
-    
-//     document.querySelector('.box').style.display='inline-block'
-//     console.log(document.getElementById('start'))
-
-//     let user = { Name: localStorage.getItem("user") };
-    
-//     fetch("/loadchats", {
-//       method: "POST",
-//       headers: {
-//         "Content-type": "application/json",
-//       },
-//       body: JSON.stringify(user),
-//     })
-//     .then((response) => response.json())
-//     .then((data) => {
-//       console.log(data);
-//       let ChatsArray = Array.from(data);
-//       ChatsArray.forEach((element) => {
-//         let chat = document.createElement("div");
-//         chat.className = "chat";
-//         document.getElementById("chats").appendChild(chat);
-//         chat.innerHTML = element;
-//         console.log(chat)
-//         chat.addEventListener('click',()=>{
-//           alert("clicked")
-//         })
-//         document.querySelector('.box').style.display='inline-block'
-//         document.getElementById('welcome-box').style.display='none'
-//       });
-      
-//     });
-    
-//     document.getElementById('welcome-box').style.display='none'
-    
-    
-    
-//   });
-  
-  
-// })
-  
-  
-  
-  
