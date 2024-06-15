@@ -139,7 +139,6 @@
         display: flex;
         position: absolute;
         justify-content: center;
-        right: 25px;
         padding: 5px;
         background-color: #00000044;
         margin-left: 20px;
@@ -266,6 +265,37 @@
         .dropList:hover {
         box-shadow: 0px 0px 20px rgb(1, 145, 255);
         text-shadow: 0px 0px 10px rgb(1, 145, 255);
+      }
+      @media screen and (max-width: 375px){
+       .box{
+       width: 10vw;
+       height: 10vw;
+       right: 20vw;
+
+       }
+       .message-icon{
+        width: 25px;
+        height: 15px;
+       }
+       .message-icon:before {
+       
+        bottom: -7px;
+        left: 5px;
+        width: 0;
+        height: 0;
+        border-left: 2px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 10px solid rgb(0, 221, 203);
+      }
+      .more-icon{
+        width: 10vw;
+        height: 10vw;
+        right: 5vw;
+      }
+      #more span{
+        width: 7vw;
+        margin-bottom: 2px;
+      }
       }
    
     </style>

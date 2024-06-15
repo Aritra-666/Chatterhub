@@ -17,27 +17,12 @@
             background-size: cover;
             /* background-image: linear-gradient(rgba(255, 255, 255, 0),black); */
             background-attachment: fixed;
+            background-position: center;
             overflow-x: hidden;
             cursor:default;
         }
-        header {
-            /* margin-top: 100px; */
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-        }
-        h2{
-            width: fit-content;
-            font-size: 5em; 
-            margin-left: 25px;
-            margin-bottom: 0px;
-            /* background-color: #ff0000; */
-            height: 50px;
-            text-shadow: 0px 0px 25px black;
-            justify-self: left;
-            font-family: dancing script;
-        }
-        h3{
+      
+        #logo h3{
             width: fit-content;
             font-size: 2em; 
             margin-left: 25px;
@@ -47,35 +32,58 @@
             justify-self: left;
             font-family: kanit;
         }
-        h1{
-            width: fit-content;
-            margin: 0;
-            font-size: 15em;
-            font-family: dancing script;
-            text-shadow: 0px 0px 25px black;
-            /* background-color: #4400ff; */
+       
+        #logo {
+        display: flex;
+        position: fixed;
+        align-items: center;
+        top: 0;
+        font-size: 1rem;
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 15vh;
+        margin-bottom: 25px;
+        background-image: linear-gradient(
+          rgb(235, 143, 78),
+          rgba(255, 255, 255, 0)
+        );
+        z-index: 2;
+      }
+
+        #chatterhub {
+            position: absolute;
+            display: flex;
+            left:50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            color: #ffffff;
+            font-family: Dancing Script;
+            font-size: 5rem;
+        }
+      
+        @media screen and (max-width: 680px){
+            #chatterhub{
+                font-size: 4rem;
+            }
+           
+        }
+        @media screen and (max-width: 550px){
+            #chatterhub{
+                font-size: 3rem;
+            }
+           
+        }
+        @media screen and (max-width: 410px){
+            #chatterhub{
+                font-size: 2rem;
+            }
             
         }
-        div#logo{
-
-            display: flex;
-            /* position: fixed; */
-            /* justify-content: left; */
-            /* align-items: center; */
-            margin: 0;
-            padding: 0;
-            width: 100vw;
-            height: 15vh;
-     
-            background-image: linear-gradient(rgb(237, 160, 44),rgba(255, 255, 255, 0));
-        }
-        
-       
-       
         .login-container {
-            position: relative;
-            margin-top: 30vh;
-            margin-bottom: 15vh;
+            position: absolute;
+            top: 100vh;
+            bottom: 50vh;
             color: #ffffff;
             /* position: absolute; */
             /* bottom: 50px; */
@@ -83,8 +91,11 @@
             left: 50%;
             transform: translateX(-50%);
             width: 80vw;
+            height: fit-content;
             max-width: 600px;
-            background-color: #00000064;
+            border: 15vh solid rgba(255, 255, 255, 0);
+           
+            background-color: #00000000;
             border-radius: 5px;
             padding: 0px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -149,41 +160,17 @@
             text-decoration: underline;
         }
    
-.navbar {
-  background-color: #333;
-  overflow: hidden; 
-}
 
-
-.navbar a {
-  float: left;
-  display: block; 
-  color: white;
-  text-align: center; 
-  padding: 14px 20px; 
-  text-decoration: none;
-}
-
-.navbar a:hover {
-  background-color: #ddd; 
-  color: black; 
-}
-div#not{
-    height: 30px;
-    width: fit-content;
-    color: aquamarine;
-    font-size: 1.5rem;
-    font-family: kanit;
-    text-shadow: 0px 0px 20px black;
+/* #not{
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0.5;
-   animation: scroll2 1s linear infinite;
+    display: flex;
+    height: 50vh;
+    width: 100vw;
+    background-color: #fff;
+    bottom: 0;
+} */
 
-}
-
-  @keyframes scroll {
+@keyframes scroll {
     0%{
      opacity: 0;
      
@@ -211,21 +198,6 @@ div#not{
     }
     
   }
-  @keyframes scroll2 {
-    0%{
-     
-     bottom: 90px;
-    }
-    50%{
-        
-        bottom: 110px;
-    }
-    100%{
-     
-        bottom: 90px;
-    }
-    
-  }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -238,21 +210,17 @@ div#not{
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- <nav>
-        <a href="log.html">Login</a>
-        <a href="contact.html">Contact</a>
-        <a href="about.html">About</a>
-    </nav> -->
+    
     <div id="logo">
+        
         <h3>codeboldy</h3>
     </div>
-    <header>
-        
-        <h2>Welcome&nbsp;to</h2>
-        <br>
-        <h1>Chatterhub</h1>
-    </header>
-    <div id="not">scroll down to start chatting!</div>
+   <div id="chatterhub">
+    
+       <h1>Chatterhub</h1>
+   </div>
+   
+  
     <div class="login-container">
         <h4>Login</h4>
         <form action="#" method="post">
@@ -265,10 +233,7 @@ div#not{
         <div id="submit"><h3>log in</h3></div>
        Don't have an account? <a href="sign.html">*create account</a>
     </div>
-    <nav class="navbar">
-        <a href="contact.html">Contact</a>
-        <a href="about.html">About</a>
-    </nav>
+    <div id="not"></div>
     <script src="index.js"></script>
 </body>
 </html>
