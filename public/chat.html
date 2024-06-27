@@ -352,7 +352,9 @@
           
             width: 30px;
             height: 50px;
-            display: inline-block; 
+            display: flex; 
+            justify-content: center;
+            align-items: center;
             padding: 10px 20px;
             background-color: #caffcc;
             color: white;
@@ -432,7 +434,13 @@
       <img src="" id="profileimage"></img>
       <div id="cross2-icon"></div>
       <div class="file-input-container">
-        <label class="file-label" for="file"></label>
+        <label class="file-label" for="file">
+          <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-camera">
+          <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h3.17a2 2 0 0 0 1.42-.59l1.66-1.66a2 2 0 0 1 1.42-.59h4.68a2 2 0 0 1 1.42.59l1.66 1.66a2 2 0 0 0 1.42.59H21a2 2 0 0 1 2 2z"></path>
+          <circle cx="12" cy="13" r="4"></circle>
+        </svg>
+        
+        </label>
         <input type="file" id="file" class="file-input">
         
     </div>
