@@ -5,7 +5,7 @@ const UserDetails = new mongoose.Schema({
     Email:String,
     Name:String,
     Password:String,
-    Date: String
+    ProfileImage:String, 
 
   });
 

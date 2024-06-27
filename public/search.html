@@ -91,12 +91,22 @@
             margin-top: 20px;
             justify-content: center;
             align-items: center;
-            height: 50px;
+            height: 100px;
             max-width: 600px;
             width: 80vw;
+            border-radius: 25px;
             left:50%;
             transform:translateX(-50%) ;
             cursor: pointer;
+            z-index: 2;
+            }
+            #resultimg{
+                display: flex;
+                position: absolute;
+                height: 70px;
+                width: 70px;
+                border-radius: 50%;
+                left: 10%;
             }
     </style>
 </head>
@@ -109,7 +119,8 @@
         </form>
       </div>
     <div id="result">
-
+          <img  id="resultimg">
+          <div id="resultname"></div>
     </div>
     <script src="search.js"></script>
 </body>

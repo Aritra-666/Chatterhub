@@ -5,12 +5,14 @@ document.getElementById("search-button").addEventListener("click", () => {
   console.log(username);
   if (username == "") {
     alert("Enter valid username");
-  }else if(username == localStorage.getItem("user")){
+  }
+  else if(username == localStorage.getItem("user")){
     document.getElementById("search-button").classList.remove("flick");
     document.getElementById("search-button").innerHTML="search";
     document.getElementById("result").style.display='flex'
-    document.getElementById("result").innerHTML = "No user found";
-  } else {
+    document.getElementById("resultname").innerHTML = "No user found";
+  } 
+  else {
     const name = {
       name: username,
     };
@@ -29,20 +31,21 @@ document.getElementById("search-button").addEventListener("click", () => {
         document.getElementById("search-button").innerHTML="search";
         if(data !== null){
           document.getElementById("result").style.display='flex'
-          document.getElementById("result").innerHTML = data;
+          document.getElementById("resultname").innerHTML = data.Name;
+          document.getElementById("resultimg").src=data.ProfileImage;
         }else{
           document.getElementById("result").style.display='flex'
-          document.getElementById("result").innerHTML = "No user found";
+          document.getElementById("resultname").innerHTML = "No user found";
         }
       });
   }
 });
 document.getElementById("result").addEventListener('click',()=>{
    
-    if(document.getElementById("result").innerHTML !==  "No user found"){
-        
+    if(document.getElementById("resultname").innerHTML !==  "No user found"){
+      console.log("pressed")  
       let name={
-        Name:document.getElementById("result").innerHTML
+        Name:document.getElementById("resultname").innerHTML
       }
 
       fetch("/message", {

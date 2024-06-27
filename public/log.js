@@ -28,6 +28,8 @@ document.getElementById("submit").addEventListener("click", () => {
               window.location.assign("chat.html");
            
            
+          }else{
+            alert("No account found")
           }
         });
     }

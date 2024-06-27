@@ -149,6 +149,7 @@
         border: 2px solid rgba(0, 0, 0, 0);
         right: 100px;
       }
+     
       #login {
         position: absolute;
         right: 25px;
@@ -207,12 +208,36 @@
         left: 50%;
         width: 30px;
         height: 5px;
-        background-color: rgb(0, 221, 203);
+        background-color: rgb(255, 242, 0);
       }
       #cross-icon::before {
         transform: translate(-50%, -50%) rotate(45deg);
       }
       #cross-icon::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+      #cross2-icon {
+        display: flex;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        top: 5px;
+        right: 5px;
+      }
+      #cross2-icon::before,
+      #cross2-icon::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 30px;
+        height: 5px;
+        background-color: rgb(0, 221, 203);
+      }
+      #cross2-icon::before {
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+      #cross2-icon::after {
         transform: translate(-50%, -50%) rotate(-45deg);
       }
       #dropdown-content {
@@ -257,6 +282,42 @@
         padding-right: 20px;
         transition: 0.5s;
       }
+      #profilecard{
+        display: none;
+        position: absolute;
+        justify-self: center;
+        align-self: center;
+        justify-content: center;
+        max-width: 400px;
+        max-height: 600px;
+        height: 90vmin;
+        width: 60vmin;
+        background-color: #ffffff74;
+        border: 3px solid rgba(255, 255, 255, 0.219);
+        box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.459);
+        border-radius: 25px;
+        border: 2px solid rgba(0, 0, 0, 0);
+        z-index: 3;
+      }
+      #profileimage{
+
+        display: flex;
+        position: absolute;
+        top: 10vmin;
+        border-radius: 50%;
+        height: 40vmin;
+        width: 40vmin;
+        background-color: #ffffff;
+
+      }
+      #username{
+        display: flex;
+        position: absolute;
+        bottom: 20vmin;
+        height: 50px;
+        width: fit-content;
+        background-color: #6600ff00;
+      }
       #logOutBtn:hover { 
        
         box-shadow: 0px 0px 20px rgb(255, 39, 1);
@@ -266,6 +327,49 @@
         box-shadow: 0px 0px 20px rgb(1, 145, 255);
         text-shadow: 0px 0px 10px rgb(1, 145, 255);
       }
+      .file-input-container {
+           
+            display: inline-block;
+            top: 10px;
+          left: 10px;
+          position: absolute;
+        }
+        #file{
+          top: 5px;
+          left: 5px;
+          position: absolute;
+          border-radius: 50%;
+        }
+        .file-input {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .file-label {
+          
+            width: 30px;
+            height: 50px;
+            display: inline-block; 
+            padding: 10px 20px;
+            background-color: #caffcc;
+            color: white;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .file-label:hover {
+            background-color: #45a049;
+        }
+
+        .file-name {
+            margin-left: 10px;
+            font-size: 16px;
+            vertical-align: middle;
+        }
       @media screen and (max-width: 375px){
        .box{
        width: 10vw;
@@ -312,16 +416,26 @@
         </div>
         <div id="cross-icon"></div>
       </div>
-
       <div class="box" style="display: none">
         <a href="search.html"><div class="message-icon"></div></a>
       </div>
     </div>
+    <div id="profilecard">
+      <img src="" id="profileimage"></img>
+      <div id="cross2-icon"></div>
+      <div class="file-input-container">
+        <label class="file-label" for="file"></label>
+        <input type="file" id="file" class="file-input">
+        
+    </div>
+      <div id="username"></div>
+  </div>
     <div id="dropdown-content">
       <a class="dropList" href="log.html">Switch account</a>
 
       <a class="dropList" href="contact.html">Contact us</a>
       <a class="dropList" href="about.html">About us</a>
+      <span class="dropList" id="profile">Your profile</span>
       <span  id="logOutBtn">Log out</span>
     </div>
 

@@ -1,6 +1,7 @@
 import express from 'express';
 import nodemailer from 'nodemailer';
 import otpGenerator from 'otp-generator';
+import bodyParser from 'body-parser';
 import _ from 'lodash'
 import mongoose from 'mongoose';
 import { user } from './models/user.js'
@@ -16,6 +17,10 @@ const __dirname = dirname(__filename);
 
 const app = express();
 var OTP;
+
+app.use(bodyParser.json({ limit: '50mb' }));
+
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
@@ -102,7 +107,7 @@ app.post('/dataCheck', (req, res) => {
       Email: req.body.email,
       Name: req.body.name,
       Password: req.body.password,
-      Date: req.body.date
+      ProfileImage:null,
     });
     USER.save();
 
@@ -131,8 +136,13 @@ app.post('/dataCheck', (req, res) => {
   user.findOne({ Name: req.body.name })
  .then(data => {
    console.log(data);
+   
    if(data!== null){
-     res.json(data.Name);
+    let result={
+      Name:data.Name,
+      ProfileImage:data.ProfileImage
+     }
+     res.json(result);
     }else{
       res.json(data)
     }   
@@ -196,3 +206,30 @@ app.post('/dataCheck', (req, res) => {
   
 
  })
+
+app.post('/updatePP', (req, res) => {
+  console.log(req.body.base64URL);
+
+  user.findOne({ Name: req.body.Name })
+    .then(data => {
+      console.log(data);
+
+      return user.updateOne({ Name: req.body.Name }, { $set: { ProfileImage: req.body.base64URL } });
+    })
+    .then(updateResult => {
+      console.log("Update done", updateResult);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).send("An error occurred while updating the profile image");
+    });
+});
+
+  app.post('/profileImage', (req, res) => {
+    user.findOne({Name:req.body.Name})
+    .then(data=>{
+      res.json(data.ProfileImage)
+    })
+  })
+  
+ 
