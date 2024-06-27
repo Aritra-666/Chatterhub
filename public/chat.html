@@ -70,9 +70,9 @@
         z-index: 1;
       }
       .chat:hover {
-        background-color: rgba(39, 9, 191, 0.314);
-        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.638);
-        width: 80vw;
+        /* background-color: rgba(39, 9, 191, 0.314); */
+        box-shadow: 0px 0px 20px rgba(39, 9, 191, 0.314);
+        
         /* height: 125px; */
       }
       #logo {
@@ -370,6 +370,14 @@
             font-size: 16px;
             vertical-align: middle;
         }
+        .chatimg{
+            display: flex;
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            left: 20%;
+            border-radius: 50%;
+        }
       @media screen and (max-width: 375px){
        .box{
        width: 10vw;
@@ -440,7 +448,9 @@
     </div>
 
     <div id="chats">
-      <!-- <div class="chat">dfh</div> -->
+      <!-- <div class="chat">
+        <img src="782894.jpg" class="chatimg">
+    </div> -->
     </div>
     <script src="chat.js"></script>
   </body>

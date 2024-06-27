@@ -38,16 +38,40 @@ window.addEventListener("load", () => {
 
       data.forEach((element) => {
         let chat = document.createElement("div");
+        let chatIMG=document.createElement("img");
+        let chatname=document.createElement("div");
+        let name={
+          Name:element
+        }
         chat.className = "chat";
-        chat.innerHTML = element;
+        chatname.innerHTML = element;
+        chatIMG.className="chatimg"
+        chatname.className="chatname"
         chatsContainer.appendChild(chat);
+        chat.appendChild(chatIMG);
+        chat.appendChild(chatname);
+
+        fetch("/profileImage", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(name),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+          chatIMG.src=data
+         
+        });
+
+
         console.log('Created chat element:', chat);
 
         chat.addEventListener('click', () => {
           console.log('Chat element clicked:', chat);
 
           let name = {
-            Name: chat.innerHTML
+            Name: chatname.innerHTML
           }
 
           fetch("/message", {
