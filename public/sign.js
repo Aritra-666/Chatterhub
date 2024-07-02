@@ -38,6 +38,10 @@ document.getElementById("submit").addEventListener("click", () => {
             document.getElementById("sign").innerHTML = "Submit";
             document.getElementById("sign").classList.remove("flick");            
             document.getElementById("email").value = "";
+          }else if(data.code == 'EDNS'){
+            alert("Please connect your device to internet");
+            document.getElementById("sign").innerHTML = "Submit";
+            document.getElementById("sign").classList.remove("flick");            
           }
 
         }

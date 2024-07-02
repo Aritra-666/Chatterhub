@@ -1,4 +1,5 @@
 document.getElementById("search-button").addEventListener("click", () => {
+    document.getElementById("resultimg").style.display="none"
     document.getElementById("search-button").innerHTML="wait..."
     document.getElementById("search-button").classList.add("flick")
   const username = document.getElementById("search-input").value;
@@ -32,6 +33,7 @@ document.getElementById("search-button").addEventListener("click", () => {
         if(data !== null){
           document.getElementById("result").style.display='flex'
           document.getElementById("resultname").innerHTML = data.Name;
+          document.getElementById("resultimg").style.display="flex"
           document.getElementById("resultimg").src=data.ProfileImage;
         }else{
           document.getElementById("result").style.display='flex'
