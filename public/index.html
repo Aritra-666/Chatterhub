@@ -10,14 +10,9 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-repeat: no-repeat;
+           background-color: #f8f5a3aa;
             height: 100vh;
             width: 100vw;
-            background-image: url(782894.jpg);
-            background-size: cover;
-            /* background-image: linear-gradient(rgba(255, 255, 255, 0),black); */
-            background-attachment: fixed;
-            background-position: center;
             overflow-x: hidden;
             cursor:default;
         }
@@ -44,11 +39,13 @@
         width: 100vw;
         height: 15vh;
         margin-bottom: 25px;
-        background-image: linear-gradient(
-          rgb(235, 143, 78),
-          rgba(255, 255, 255, 0)
-        );
+        background-color: #fff;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.421);
         z-index: 2;
+      }
+      img[src="Your paragraph text.png"]{
+        height: 13vh;
+        width: 300px;
       }
 
         #chatterhub {
@@ -57,7 +54,9 @@
             left:50%;
             top: 50%;
             transform: translate(-50%,-50%);
-            color: #ffffff;
+            background: linear-gradient(to top, #ff0000,#ff0000, #c300ff,#00d9ff,#1500ff);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
             font-family: Dancing Script;
             font-size: 5rem;
         }
@@ -94,18 +93,23 @@
             height: fit-content;
             max-width: 600px;
             border: 15vh solid rgba(255, 255, 255, 0);
-           
+            
             background-color: #00000000;
             border-radius: 5px;
             padding: 0px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.0);
             animation: scroll linear;
             animation-timeline: view();
         }
         .login-container h4 {
             text-align: center;
-            color:white;
+            background: linear-gradient(to top, #ff0000, #c300ff,#00d9ff);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
             font-size: 2rem;
+        }
+        label[for="username"],label[for="password"]{
+            color: #00d9ff;
         }
         .login-container input[type="text"],
         .login-container input[type="password"]
@@ -118,7 +122,7 @@
             border: 2px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
-            color: aqua;
+            color: rgb(187, 0, 255);
         }
        .login-container div#submit {
             height: 75px;
@@ -130,8 +134,8 @@
             border-radius: 4px;
             box-sizing: border-box;
             margin-top: 50px;
-            background-color: #00000079;
-            color: white;
+            background-color: #8f74ee;
+           
             transition: 0.5s;
             border: none;
             cursor: pointer;
@@ -160,15 +164,12 @@
             text-decoration: underline;
         }
    
+       h6{
+        margin-right: 0px;
+        display: inline-block;
+        color: #5c5c5c;
+       }
 
-/* #not{
-    position: absolute;
-    display: flex;
-    height: 50vh;
-    width: 100vw;
-    background-color: #fff;
-    bottom: 0;
-} */
 
 @keyframes scroll {
     0%{
@@ -213,7 +214,7 @@
     
     <div id="logo">
         
-        <h3>codeboldy</h3>
+        <img src="Your paragraph text.png" alt="" >
     </div>
    <div id="chatterhub">
     
@@ -231,9 +232,9 @@
             <input type="password" id="password" name="password" required>
         </form>
         <div id="submit"><h3>log in</h3></div>
-       Don't have an account? <a href="sign.html">*create account</a>
+       <h6>Don't have an account?</h6> <a href="sign.html">*create account</a>
     </div>
-    <div id="not"></div>
+    
     <script src="index.js"></script>
 </body>
 </html>

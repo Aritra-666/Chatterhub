@@ -38,7 +38,21 @@ window.addEventListener('load',()=>{
 
 
     })
-
+    let name={
+      Name:receiver
+    }
+    fetch("/profileImage", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(name),
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      document.getElementById("profileimage").src=data
+     
+    });
 
 })
 document.getElementById('send').addEventListener('click',()=>{

@@ -13,13 +13,9 @@
         height: 100vh;
         margin: 0;
         padding: 0;
-        background-position: center;
-        background-image: url(1216348.jpg);
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
+        background-color: #cfffac;
       }
-      #sending-box{
+      #sending-box {
         width: 100vw;
         height: 55px;
         position: fixed;
@@ -27,53 +23,73 @@
         bottom: 25px;
         background-color: rgba(255, 255, 255, 0);
       }
-      input[type="text"]{
-        
-        display:inline-block;
+      input[type="text"] {
+        display: inline-block;
         height: 50px;
         width: 75vw;
         padding-left: 2.5vw;
         padding-right: 2.5vw;
-        margin-left:2vw;
-        background-color: rgb(1, 23, 34);
-        border: 2px solid white;
-        color: white;
+        margin-left: 2vw;
+        background-color: #fff2c1;
+        border: 2px solid rgb(107, 107, 107);
+        color: rgb(0, 0, 0);
         border-radius: 25px;
       }
-      #header{
+      #header {
         position: fixed;
         display: flex;
         width: 100vw;
-        height:90px;
-        background-color: rgb(189, 254, 252);
+        height: 90px;
+        background-color: #ffffff;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.696);
       }
-      #receiver-name{
+      #sender{
         display: flex;
         position: fixed;
-        justify-content: left;
+       
         align-items: center;
-        width: fit-content;
+        width: 80vw;
         height: 55px;
         margin-top: 10px;
-       align-self: center;
-       left: 50%;
-       transform: translateX(-50%);
-       padding-left: 10vw;
+        align-self: center;
+        left: 50%;
+        /* border: 2px solid rgb(11, 255, 84); */
+        transform: translateX(-50%);
+        padding-left: 10vw;
         padding-right: 10vw;
-        border-radius: 25px;
+        /* border-radius: 25px; */
         font-size: 2rem;
-        /* text-shadow: 0px 0px 5px #ffffff; */
-       border: 2px solid #d900ff;
-        background-color:rgba(255, 255, 255, 0.103);
-        box-shadow: 0px 0px 5px #d900ff;
-        color: #d900ff;
+      }
+      #profileimage{
+        position: absolute;
+        left: 50px;
+        height: 55px;
+        width: 55px;
+        display: inline-block;
+        border-radius: 50%;
+      }
+      #receiver-name {
+        margin-left: 25px;
+        
+        
+        background: linear-gradient(
+          to top,
+          #ff0000,
+          #ff0000,
+          #c300ff,
+          #00d9ff,
+          #1500ff
+        );
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
         cursor: default;
       }
-      #message-box{
+      #message-box {
         position: absolute;
         display: grid;
         grid-row: auto;
         grid-column: 1;
+        top: 5vh;
         padding-bottom: 90px;
         left: 50%;
         transform: translateX(-50%);
@@ -84,7 +100,7 @@
         margin-bottom: 90px;
         z-index: -1;
       }
-      .message{
+      .message {
         display: flex;
         border-radius: 25px;
         padding-left: 25px;
@@ -96,24 +112,23 @@
         z-index: -1;
         align-items: center;
       }
-      .sendedMessage{
+      .sendedMessage {
         background-color: #7fff5195;
         color: rgb(255, 255, 255);
         justify-self: right;
       }
-      .receivedMessage{
-        
+      .receivedMessage {
         background-color: #ffffff74;
         color: rgb(0, 0, 0);
         justify-self: left;
       }
-      #send{
+      #send {
         display: inline-flex;
         justify-content: center;
         align-items: center;
         color: rgb(0, 208, 255);
         border: 2px solid rgb(0, 208, 255);
-        background-color: rgb(1, 23, 34);
+        background-color: #fff2c1;
         height: 50px;
         width: 15vw;
         margin-left: 1vw;
@@ -122,9 +137,9 @@
         cursor: pointer;
         border-radius: 25px;
       }
-      #send:hover{
+      #send:hover {
         color: white;
-        border:2px solid white;
+        border: 2px solid white;
         background-color: rgb(0, 175, 214);
       }
     </style>
@@ -137,15 +152,17 @@
   </head>
   <body>
     <div id="header">
-      <div id="receiver-name"></div>
-    </div>
-    
-    <div id="message-box">
-    </div>
-      <div id="sending-box">
-        <input id="text" type="text" placeholder="Type a message" />
-        <div id="send">send</div>
+      <div id="sender">
+        <img id="profileimage" src="" alt="" />
+        <div id="receiver-name"></div>
       </div>
-     <script src="message.js"></script>
+    </div>
+
+    <div id="message-box"></div>
+    <div id="sending-box">
+      <input id="text" type="text" placeholder="Type a message" />
+      <div id="send">send</div>
+    </div>
+    <script src="message.js"></script>
   </body>
 </html>

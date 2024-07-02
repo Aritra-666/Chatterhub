@@ -26,15 +26,17 @@
         font-family: "Chakra Petch", sans-serif;
         font-weight: 700;
         font-size: 1.5rem;
-        background-position: center;
-        background-image: url(1146672.jpg);
-        background-size: cover;
+       
         display: grid;
         justify-content: center;
-        background-attachment: fixed;
+        background-color: #a4d0ff;
         cursor: default;
         overflow-x: hidden;
         color: #ffffff;
+      }
+      img[src="Your paragraph text.png"]{
+        height: 13vh;
+        width: 300px;
       }
 
       #start {
@@ -62,10 +64,10 @@
         margin-top: 5px;
         width: 70vw;
         height: 100px;
-        background-color: rgba(0, 0, 0, 0.484);
-        color: white;
+        background-color: rgba(255, 255, 255, 0.86);
+        color: rgb(7, 255, 164);
         border-radius: 10px;
-        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.629);
+        box-shadow: 0px 0px 5px rgba(94, 72, 235, 0.629);
         transition: 0.5s;
         z-index: 1;
       }
@@ -85,10 +87,8 @@
         width: 100vw;
         height: 15vh;
         margin-bottom: 25px;
-        background-image: linear-gradient(
-          rgb(41, 23, 132),
-          rgba(255, 255, 255, 0)
-        );
+       background-color: #fff;
+       box-shadow: 0px 0px 10px black;
         z-index: 2;
       }
 
@@ -122,7 +122,7 @@
         position: relative;
         border-radius: 5px;
       }
-
+      
       .message-icon:before {
         content: "";
         position: absolute;
@@ -140,9 +140,9 @@
         position: absolute;
         justify-content: center;
         padding: 5px;
-        background-color: #00000044;
+        background-color: #ffffff;
         margin-left: 20px;
-        box-shadow: 0px 0px 5px rgba(255, 248, 248, 0.564);
+        box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.847);
         width: 50px;
         height: 50px;
         border-radius: 50%;
@@ -161,10 +161,12 @@
         mix-blend-mode: multiply;
       }
       #chats {
+        position: absolute;
         display: grid;
         grid-row: auto;
         grid-column: 1;
         justify-content: center;
+        top: 5vh;
         height: 100vh;
         width: 100vw;
         margin-top: 90px;
@@ -180,10 +182,10 @@
         width: 50px;
         height: 50px;
         right: 35px;
-        background-color: #00000044;
+        background-color: #fff;
         border-radius: 50%;
         cursor: pointer;
-        box-shadow: 0px 0px 5px rgba(255, 248, 248, 0.564);
+        box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.8);
       }
 
       .more-icon span {
@@ -292,9 +294,9 @@
         max-height: 600px;
         height: 90vmin;
         width: 60vmin;
-        background-color: #ffffff74;
+        background-color: #ffffffc4;
         border: 3px solid rgba(255, 255, 255, 0.219);
-        box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.459);
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.459);
         border-radius: 25px;
         border: 2px solid rgba(0, 0, 0, 0);
         z-index: 3;
@@ -316,7 +318,10 @@
         bottom: 20vmin;
         height: 50px;
         width: fit-content;
-        background-color: #6600ff00;
+        background-color: #6600ff;
+        background: linear-gradient(to top, #ff0000,#ff0000, #c300ff,#00d9ff,#1500ff);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
       #logOutBtn:hover { 
        
@@ -406,7 +411,7 @@
         height: 10vw;
         right: 5vw;
       }
-      #more span{
+       span{
         width: 7vw;
         margin-bottom: 2px;
       }
@@ -416,7 +421,7 @@
   </head>
   <body>
     <div id="logo">
-      <h3>codeboldy</h3>
+     <img src="Your paragraph text.png" alt="">
 
       <div class="more-icon">
         <div id="more">
@@ -431,7 +436,7 @@
       </div>
     </div>
     <div id="profilecard">
-      <img src="" id="profileimage"></img>
+      <img src="" id="profileimage">
       <div id="cross2-icon"></div>
       <div class="file-input-container">
         <label class="file-label" for="file">
@@ -458,7 +463,8 @@
     <div id="chats">
       <!-- <div class="chat">
         <img src="782894.jpg" class="chatimg">
-    </div> -->
+        dhdsh -->
+    </div>
     </div>
     <script src="chat.js"></script>
   </body>

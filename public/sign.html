@@ -10,28 +10,17 @@
         padding: 0;
         height: 100vh;
         width: 100vw;
-        background-image: url(1146672.jpg);
-        background-size: cover;
+        background-color: #fff;
         /* display: flex; */
         justify-content: center;
         align-items: center;
-        background-position: center;
+        
         font-family: chakra petch;
-        color: rgb(75, 255, 87);
+        color: rgb(150, 113, 252);
         cursor: default;
       }
 
-      div#logo {
-        position: absolute;
-        width: 100vw;
-        height: 15vh;
       
-
-        background-image: linear-gradient(
-          rgb(62, 10, 125),rgba(62, 10, 125, 0.51),rgba(255, 255, 255, 0)
-         
-        );
-      }
       h4{
             width: fit-content;
             font-size: 2em; 
@@ -50,10 +39,10 @@
         transform: translate(-50%,-50%);
         max-width: 600px;
         width: 80vw;
-        background-color: #0000006e;
+        background-color: #ffffff6e;
         border-radius: 5px;
         padding: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.622);
       }
       #otp-container {
         display: none;
@@ -64,15 +53,17 @@
         max-width: 600px;
         width: 80vw;
         height: 350px;
-        background-color: #0000006e;
+        background-color: #ffffff6e;
         border-radius: 5px;
         padding: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
       }
       h2 {
         text-align: center;
         font-size: 2rem;
-        color: white;
+        background: linear-gradient(to top, #ff0000,#ff0000, #c300ff,#00d9ff,#1500ff);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
       }
 
       #signin-container input[type="text"],
@@ -97,7 +88,7 @@
         border: 1px solid #ccc;
         border-radius: 4px;
         box-sizing: border-box;
-        background-color: #000000a8;
+        background-color: #6779eba8;
         color: white;
         transition: 0.5s;
         border: none;
@@ -147,7 +138,7 @@
         left: 50%;
         bottom: 100px;
         transform: translateX(-50%);
-        background-color: #ffffff3a;
+        background-color: #7f72f53a;
         color: #fff;
         margin-top: 50px;
         border: none;
@@ -160,7 +151,7 @@
       #otp-submit:hover  {
         background-color: #45a049;
        
-        filter: drop-shadow(0 0 10px #45a049 );
+        
       }
       input#otp{
         position: absolute;
@@ -197,9 +188,7 @@
   </head>
 
   <body>
-    <div id="logo">
-        <h4>codeboldy</h4>
-    </div>
+    
     <div id="signin-container">
       <h2>Sign In</h2>
       <form action="#" method="post">

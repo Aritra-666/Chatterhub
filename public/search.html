@@ -15,21 +15,23 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background-image: url(1216348.jpg);
+            background-color: #ffd0d0;
         }
         .container {
             max-width: 600px;
             width: 80vw;
             margin: 20px auto;
             padding: 20px;
-            background-color: #000000a2;
+            background-color: #ffffff;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
         }
         h1 {
             text-align: center;
             margin-bottom: 20px;
-            color: white;
+            background: linear-gradient(to top, #ff0000,#ff0000, #c300ff,#00d9ff,#1500ff);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         .search-form {
             text-align: center;
@@ -59,10 +61,11 @@
             width: 70%;
             padding: 10px;
             border: 1px solid #ffffff;
-            background-color: rgba(0, 0, 0, 0.422);
+            background-color: rgba(255, 255, 255, 0.422);
             border-radius: 4px;
             margin-bottom: 10px;
-            color: white;
+            border: 2px solid black;
+            color: rgb(0, 0, 0);
             font-size: 16px;
         }
         #search-button {
@@ -71,7 +74,7 @@
             transform: translateX(-50%);
             width: 80px;
             padding: 10px 20px;
-            background-color: #000000a8;
+            background-color: hsla(208, 97%, 75%, 0.659);
             color: #fff;
             border: none;
             border-radius: 4px;
@@ -80,14 +83,14 @@
             transition: 0.5s;
         }
         #search-button:hover {
-            background-color: #0056b3;
+            background-color: #00ff6a;
         }
         #result {
             /* display:flex; */
             display: none;
             position:absolute;
-            background-color: #000000a2 ;
-            color:white;
+            background-color: #ffffff ;
+            color:rgb(0, 0, 0);
             margin-top: 20px;
             justify-content: center;
             align-items: center;
@@ -112,7 +115,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>User Search</h1>
+        <h1>Search users</h1>
         <form class="search-form" action="#" method="GET">
             <input id="search-input" type="text" name="search" placeholder="Enter username...">
             <div id="search-button" type="submit">Search</div>
