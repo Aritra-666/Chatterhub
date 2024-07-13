@@ -14,50 +14,51 @@
         /* display: flex; */
         justify-content: center;
         align-items: center;
-        
+        background: linear-gradient(45deg, grey, white);
         font-family: chakra petch;
         color: rgb(217, 245, 247);
         cursor: default;
       }
 
-      
-      h4{
-            width: fit-content;
-            font-size: 2em; 
-            margin-left: 25px;
-            margin-bottom: 0px;
-             /* background-color: #ff0000; */
-             color: white;
-            justify-self: left;
-            font-family: kanit;
-        }
+      h4 {
+        width: fit-content;
+        font-size: 2em;
+        margin-left: 25px;
+        margin-bottom: 0px;
+        /* background-color: #ff0000; */
+        color: white;
+        justify-self: left;
+        font-family: kanit;
+      }
       #signin-container {
         /* display: none; */
         position: absolute;
         background: url(4502433.jpg);
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-          
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+
         left: 50%;
         top: 50%;
-        transform: translate(-50%,-50%);
+        transform: translate(-50%, -50%);
         max-width: 600px;
         width: 80vw;
         background-color: #ffffff6e;
         border-radius: 25px;
         padding: 20px;
-        box-shadow: 0 0 30px rgba(0, 0, 0, 0.622);
+
+        box-shadow: -50px 50px 30px rgba(0, 0, 0, 0.622);
       }
+
       #otp-container {
         display: none;
         position: absolute;
         left: 50%;
         top: 50%;
         background: url(4502433.jpg);
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-           
-        transform: translate(-50%,-50%);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+
+        transform: translate(-50%, -50%);
         max-width: 600px;
         width: 80vw;
         height: 350px;
@@ -69,12 +70,12 @@
       h2 {
         text-align: center;
         font-size: 2rem;
-        background: linear-gradient(to top, #00b3ff,white);
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+        background: linear-gradient(to top, #00b3ff, white);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
 
-      #signin-container input[type="text"],
+      /* #signin-container input[type="text"],
       #signin-container input[type="password"]
        {
         width: 100%;
@@ -86,7 +87,7 @@
         box-sizing: border-box;
         background-color: #ffffff00;
         color: aquamarine;
-      }
+      } */
       div#submit {
         height: 75px;
         width: 100%;
@@ -156,12 +157,10 @@
         cursor: pointer;
         transition: 0.5s;
       }
-      #otp-submit:hover  {
+      #otp-submit:hover {
         background-color: #45a049;
-       
-        
       }
-      input#otp{
+      input#otp {
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
@@ -175,10 +174,46 @@
         box-sizing: border-box;
         background-color: #ffffff00;
         color: aquamarine;
- 
       }
       .hidden {
         display: none !important;
+      }
+      .wrap-input-1 .input:focus {
+        outline: none;
+      }
+      .wrap-input-1 {
+        width: 50%;
+        margin: 40px 3%;
+        position: relative;
+      }
+      .wrap-input-1 .input::placeholder{
+        color: rgb(173, 214, 250);
+      }
+      .wrap-input-1 .input {
+        border: 0;
+        padding: 7px 0;
+        border-bottom: 2px solid #86f979;
+        width: 75vw;
+        max-width: 550px;
+        color: rgb(42, 255, 78);
+        box-sizing: border-box;
+        letter-spacing: 1px;
+        background-color: #f5f6fd00;
+        cursor: pointer;
+      }
+      .wrap-input-1 .input ~ .focus-border {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 75vw;
+        max-width: 550px;
+        height: 2px;
+        background-color: #6c5dd3;
+        transition: 0.4s;
+      }
+      .wrap-input-1 .input:focus ~ .focus-border {
+        width: 0;
+        transition: 0.4s;
       }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -196,16 +231,31 @@
   </head>
 
   <body>
-    
     <div id="signin-container">
       <h2>Sign In</h2>
       <form action="#" method="post">
-        <label for="email">Email</label>
-        <input id="email" type="text" name="email" required />
-        <label for="username">Username</label>
-        <input id="username" type="text" name="username" required />
-        <label for="password">Password</label>
-        <input id="password" type="password" name="password" required />
+        <div class="wrap-input-1">
+          <input class="input" id="email" type="text" placeholder="Email" />
+          <span class="focus-border"></span>
+        </div>
+        <div class="wrap-input-1">
+          <input
+            class="input"
+            id="username"
+            type="text"
+            placeholder="Username"
+          />
+          <span class="focus-border"></span>
+        </div>
+        <div class="wrap-input-1">
+          <input
+            class="input"
+            id="password"
+            type="password"
+            placeholder="Password"
+          />
+          <span class="focus-border"></span>
+        </div>
       </form>
 
       <div id="submit"><h3 id="sign">Sign in</h3></div>
@@ -214,7 +264,7 @@
       <h2>Enter the OTP that sent to your email</h2>
       <form id="otp-form">
         <div class="otp-input">
-          <input id="otp" type="text" maxlength="4"  required />
+          <input id="otp" type="text" maxlength="4" required />
         </div>
         <div id="otp-submit">Submit</div>
       </form>

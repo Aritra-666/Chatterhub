@@ -6,6 +6,8 @@ document.getElementById("search-button").addEventListener("click", () => {
   console.log(username);
   if (username == "") {
     alert("Enter valid username");
+    document.getElementById("search-button").classList.remove("flick");
+    document.getElementById("search-button").innerHTML="search";
   }
   else if(username == localStorage.getItem("user")){
     document.getElementById("search-button").classList.remove("flick");

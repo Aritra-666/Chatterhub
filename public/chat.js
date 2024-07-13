@@ -131,7 +131,11 @@ document.getElementById('logOutBtn').addEventListener('click', () => {
 })
 
 document.getElementById('profile').addEventListener('click', () => {
-
+  document.querySelectorAll(".chat").forEach((element)=>{
+    element.style.filter="blur(25px)"
+  })
+  document.getElementById("logo").style.filter="blur(25px)"
+  document.getElementById("dropdown-content").style.filter="blur(25px)"
   document.getElementById("profilecard").style.display = "flex"
   document.getElementById("username").innerHTML = localStorage.getItem('user')
   const profiledata={Name:localStorage.getItem('user')}
@@ -149,6 +153,8 @@ document.getElementById('profile').addEventListener('click', () => {
 })
 document.getElementById('cross2-icon').addEventListener('click', () => {
   document.getElementById("profilecard").style.display = "none"
+    document.getElementById("logo").style.filter="blur(0px)"
+  document.getElementById("dropdown-content").style.filter="blur(0px)"
 })
 
 

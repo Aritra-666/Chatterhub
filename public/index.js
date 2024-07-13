@@ -44,8 +44,42 @@ function setCookie(name, value, days) {
 
 
 
+// window.addEventListener("scroll", () => {
+//   if(window.scrollY <= 100){
+//     window.scrollBy({
+//       top: 1500,
+//       left: 0,
+//       behavior: 'smooth' // This will animate the scroll
+//     });
+//   }
+// })
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+async function runAfterDelay() {
+  console.log('Wait for 1 seconds...');
+  await delay(1000);
+  if(document.documentElement.clientWidth >= 1300){
+    
+    document.getElementById("chatterhub").style.left="25%"
+    document.getElementById("chatterhub").classList.add("enter")
+    await delay(1000);
+    document.querySelector(".login-container").classList.add("login-laptop")
+    document.querySelector(".login-container").style.display= "inline"
+  }else if(document.documentElement.clientWidth <= 1300){
+    await delay(1000);
+    document.getElementById("chatterhub").style.display="none"
+    await delay(1000);
+     document.querySelector(".login-container").style.display= "inline"
+     
+  }
+}
+
 
 window.addEventListener("load", () => {
+  
+  
+  
   function getCookie(name) {
     let cookieArr = document.cookie.split(";");
 
@@ -66,4 +100,6 @@ window.addEventListener("load", () => {
     localStorage.setItem("user", username);
     window.location.assign("chat.html");
   }
+
+  runAfterDelay();
 });

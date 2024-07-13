@@ -6,6 +6,8 @@ import _ from 'lodash'
 import mongoose from 'mongoose';
 import { user } from './models/user.js'
 import { messageProp } from './models/text.js'
+import 'dotenv/config';
+
 
 import fs from 'fs';
 import path from 'path';
@@ -17,6 +19,7 @@ const __dirname = dirname(__filename);
 
 const app = express();
 var OTP;
+console.log(process.env.PROFILE_PIC)
 
 app.use(bodyParser.json({ limit: '50mb' }));
 
@@ -110,7 +113,7 @@ app.post('/dataCheck', (req, res) => {
       Email: req.body.email,
       Name: req.body.name,
       Password: req.body.password,
-      ProfileImage:null,
+      ProfileImage: process.env.PROFILE_PIC
     });
     USER.save();
 
