@@ -155,6 +155,9 @@ document.getElementById('cross2-icon').addEventListener('click', () => {
   document.getElementById("profilecard").style.display = "none"
     document.getElementById("logo").style.filter="blur(0px)"
   document.getElementById("dropdown-content").style.filter="blur(0px)"
+  document.querySelectorAll(".chat").forEach((element)=>{
+    element.style.filter="blur(0px)"
+  })
 })
 
 
