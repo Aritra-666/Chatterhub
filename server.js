@@ -19,7 +19,7 @@ const __dirname = dirname(__filename);
 
 const app = express();
 var OTP;
-console.log(process.env.PROFILE_PIC)
+// console.log(process.env.PROFILE_PIC)
 
 app.use(bodyParser.json({ limit: '50mb' }));
 

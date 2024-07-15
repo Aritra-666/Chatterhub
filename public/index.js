@@ -63,12 +63,16 @@ async function runAfterDelay() {
     
     document.getElementById("chatterhub").style.left="25%"
     document.getElementById("chatterhub").classList.add("enter")
+    document.getElementById("back").style.display="flex"
+    document.getElementById("back").classList.add("widhtincrese")
     await delay(1000);
     document.querySelector(".login-container").classList.add("login-laptop")
     document.querySelector(".login-container").style.display= "inline"
   }else if(document.documentElement.clientWidth <= 1300){
-    await delay(1000);
+      await delay(1000);
     document.getElementById("chatterhub").style.display="none"
+    document.getElementById("back").style.display="flex"
+    document.getElementById("back").classList.add("widhtincrese")
     await delay(1000);
      document.querySelector(".login-container").style.display= "inline"
      
