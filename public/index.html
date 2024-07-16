@@ -17,6 +17,7 @@
         width: 100vw;
         background-attachment: fixed;
         overflow-x: hidden;
+        overflow-y: hidden;
         cursor: default;
       }
 
@@ -31,17 +32,19 @@
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
+        color: white ;
+        font-family: Dancing Script;
+        font-size: 5rem;
+        filter: drop-shadow(50px 50px 10px rgba(0, 0, 0, 0.468));
+        transition: 1s;
+        animation: exit 4s linear 1;
+      }
+      .background{
         background: url(5642597.jpg);
         background-size: 100% 100%;
         background-repeat: no-repeat;
         background-clip: text;
         -webkit-text-fill-color: transparent;
-        /* animation: enter 0.5s linear 1; */
-        font-family: Dancing Script;
-        font-size: 5rem;
-        filter: drop-shadow(50px 50px 10px rgba(0, 0, 0, 0.468));
-        transition: 0.5s;
-        animation: exit 4s linear 1;
       }
       @keyframes exit {
         0%{
@@ -104,6 +107,21 @@
           font-size: 2rem;
         }
       }
+      #sign-back{
+        height: 100vh;
+        width: 60vmax;
+        display: none;
+        position: absolute;
+        /* background-color: #ff0000; */
+        background-size: 300% 300%;
+        background: url(4502433.jpg);
+        clip-path: polygon(0 100%, 0 0, 100% 0, 70% 100%);
+        left: 0;
+        z-index: -1;
+        box-shadow: 0px 0px 50px black;
+        animation: widhtincreseFORSignback 1s linear 1;
+
+      }
       #back{
         height: 100vh;
         width: 45vmax;
@@ -114,14 +132,27 @@
         right: 0;
         z-index: -1;
         box-shadow: 0px 0px 50px black;
-      
+        
       }
+     
       .widhtincrese{
         animation: widhtincrese 0.5s linear 1;
       }
+      .widhtdecrese{
+        animation: exit 1s linear 1;
+      }
+      @keyframes widhtincreseFORSignback {
+        0%{
+          width: 0%;
+        }
+        100%{
+          width: 60vw;
+        }
+        
+      }
       @keyframes widhtincrese {
         0%{
-          width: 5vw;
+          width: 0%;
         }
         100%{
           width: 45vmax;
@@ -139,7 +170,7 @@
         background: linear-gradient(135deg,rgba(255, 255, 255, 0.111),rgba(255, 255, 255, 0));
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
-
+        transition: 1s;
         border-radius: 25px;
         padding-left: 20px;
         padding-right: 20px;
@@ -164,7 +195,7 @@
         /* transform: translateY(-50%); */
         left: 75% !important;
         
-        border: 2px solid rgba(255, 255, 255, 0.458) !important;
+        /* border: 2px solid rgba(255, 255, 255, 0.458) !important; */
         /* animation: optic 0.5s linear 1; */
         /* filter: drop-shadow(50px 50px 10px rgba(0, 0, 0, 0.468)); */
       }
@@ -225,14 +256,13 @@
       .login-containera:hover {
         text-decoration: underline;
       }
-      a {
+      #CreateAccount {
         color: aqua;
         text-decoration: none;
       }
-      a:hover {
+      #CreateAccount:hover {
         text-decoration: underline;
       }
-
       h6 {
         margin-right: 0px;
         display: inline-block;
@@ -279,6 +309,180 @@
         width: 120%;
         left: 0;
       }
+      
+      #signin-container {
+        display: none;
+        position: absolute;
+        background: url(4502433.jpg);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 60vw;
+        max-width:400px;
+        background-color: #ffffff6e;
+        border-radius: 25px;
+        padding: 20px;
+        transition: 1s;
+        box-shadow: 50px 50px 30px rgba(0, 0, 0, 0.622);
+        animation: optic 0.5s linear 1;
+      }
+
+      #otp-container {
+        display: none;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        background: url(4502433.jpg);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+
+        transform: translate(-50%, -50%);
+        width: 60vw;
+        max-width:400px;
+        height: 350px;
+        background-color: #ffffff6e;
+        border-radius: 25px;
+        padding: 20px;
+        box-shadow: 50px 50px 30px rgba(0, 0, 0, 0.6);
+      }
+      h2 {
+        text-align: center;
+        font-size: 2rem;
+        background: linear-gradient(to top, #00b3ff, white);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      div#Sign-submit {
+        height: 75px;
+        width: 100%;
+        padding: 10px;
+        margin: 20px 0px;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        background-color: #6779eba8;
+        color: white;
+        transition: 0.5s;
+        border: none;
+        cursor: pointer;
+      }
+
+      div#Sign-submit:hover {
+        background-color: #45a049;
+      }
+      h3 {
+        font-size: 1.1rem;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .flick {
+        animation: flicker 1s linear infinite running;
+      }
+      @keyframes flicker {
+        0% {
+          display: flex;
+        }
+        25% {
+          display: none;
+        }
+        50% {
+          display: none;
+        }
+        75% {
+          display: none;
+        }
+        100% {
+          display: flex;
+        }
+      }
+      a {
+        text-decoration: none;
+        transition: 0.5s;
+        color: aqua;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      #otp-submit {
+        position: absolute;
+        width: 50px;
+        left: 50%;
+        bottom: 100px;
+        transform: translateX(-50%);
+        background-color: #7f72f53a;
+        color: #fff;
+        margin-top: 50px;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.5s;
+      }
+      #otp-submit:hover {
+        background-color: #45a049;
+      }
+      input#otp {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        font-size: 1.6rem;
+        padding: 10px;
+        bottom: 50%;
+        display: inline-block;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        background-color: #ffffff00;
+        color: aquamarine;
+      }
+      .hidden {
+        display: none !important;
+      }
+      .wrap-input-1 .input:focus {
+        outline: none;
+      }
+      .wrap-input-1 {
+        width: 50%;
+        margin: 40px 3%;
+        position: relative;
+      }
+      .wrap-input-1 .input::placeholder{
+        color: rgb(173, 214, 250);
+      }
+      .wrap-input-1 .input {
+        border: 0;
+        padding: 7px 0;
+        border-bottom: 2px solid #86f979;
+        width: 55vw;
+        max-width: 350px;
+        color: rgb(42, 255, 78);
+        box-sizing: border-box;
+        letter-spacing: 1px;
+        background-color: #f5f6fd00;
+        cursor: pointer;
+      }
+      .wrap-input-1 .input ~ .focus-border {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 55vw;
+        max-width: 350px;
+        height: 2px;
+        background-color: #6c5dd3;
+        transition: 0.4s;
+      }
+      .wrap-input-1 .input:focus ~ .focus-border {
+        width: 0;
+        transition: 0.4s;
+      }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -298,10 +502,11 @@
         
         <img src="Your_paragraph_text-removebg-preview.png" alt="" >
     </div> -->
-    <div id="chatterhub">
+    <div id="chatterhub" class="background">
       <h1>Chatterhub</h1>
     </div>
      <div id="back"></div>
+     <div id="sign-back"></div>
     <div class="login-container">
       <h4>Login</h4>
       <form action="#" method="post">
@@ -321,9 +526,46 @@
       </form>
       <div id="submit"><h3>log in</h3></div>
       <h6>New on Chatterhub?</h6>
-      <a href="sign.html">*create account</a>
+      <span id="CreateAccount">*create account</span>
     </div>
+    <div id="signin-container">
+      <h2>Sign In</h2>
+      <form action="#" method="post">
+        <div class="wrap-input-1">
+          <input class="input" id="email" type="text" placeholder="Email" />
+          <span class="focus-border"></span>
+        </div>
+        <div class="wrap-input-1">
+          <input
+            class="input"
+            id="New-username"
+            type="text"
+            placeholder="Username"
+          />
+          <span class="focus-border"></span>
+        </div>
+        <div class="wrap-input-1">
+          <input
+            class="input"
+            id="New-password"
+            type="password"
+            placeholder="Password"
+          />
+          <span class="focus-border"></span>
+        </div>
+      </form>
 
+      <div id="Sign-submit"><h3 id="sign">Sign in</h3></div>
+    </div>
+    <div id="otp-container">
+      <h2>Enter the OTP</h2>
+      <form id="otp-form">
+        <div class="otp-input">
+          <input id="otp" type="text" maxlength="4" required />
+        </div>
+        <div id="otp-submit">Submit</div>
+      </form>
+    </div>
     <script src="index.js"></script>
   </body>
 </html>

@@ -10,8 +10,13 @@ document.getElementById("submit").addEventListener("click", () => {
   const EmailName = document.getElementById("email").value;
   const Username = document.getElementById("username").value;
   const Password = document.getElementById("password").value;
+  const length=Username.length;
+  console.log(length)
+
   if (EmailName == "" || Username == "" || Password == 0) {
     alert("Enter all correct details");
+  }else if( length > 10){
+     alert("Username can contain maximum 10 letters")
   } else {
     document.getElementById("sign").innerHTML = "Wait....";
     document.getElementById("sign").classList.add("flick");
