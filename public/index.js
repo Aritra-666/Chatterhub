@@ -59,7 +59,7 @@ function delay(ms) {
 async function runAfterDelay() {
   console.log('Wait for 1 seconds...');
   await delay(1000);
-  if(document.documentElement.clientWidth >= 1300){
+  if(document.documentElement.clientWidth >= 1024){
     
     document.getElementById("chatterhub").style.left="25%"
     document.getElementById("chatterhub").classList.add("enter")
@@ -68,8 +68,8 @@ async function runAfterDelay() {
     await delay(1000);
     document.querySelector(".login-container").classList.add("login-laptop")
     document.querySelector(".login-container").style.display= "inline"
-  }else if(document.documentElement.clientWidth <= 1300){
-      await delay(1000);
+  }else if(document.documentElement.clientWidth <= 1024){
+      await delay(2800);
     document.getElementById("chatterhub").style.display="none"
     document.getElementById("back").style.display="flex"
     document.getElementById("back").classList.add("widhtincrese")
@@ -82,7 +82,12 @@ async function runAfterDelay() {
 
 window.addEventListener("load", () => {
   
-  
+  if(document.documentElement.clientWidth > 1700){
+    if(! alert("Your device isn't suitable for Chatterhub")){
+      console.log("click")
+      window.close("index.html")
+    }
+  }
   
   function getCookie(name) {
     let cookieArr = document.cookie.split(";");
