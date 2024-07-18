@@ -3,9 +3,12 @@ import nodemailer from 'nodemailer';
 import otpGenerator from 'otp-generator';
 import bodyParser from 'body-parser';
 import _ from 'lodash'
+import { v4 as uuidv4 } from 'uuid';
+
 import mongoose from 'mongoose';
 import { user } from './models/user.js'
 import { messageProp } from './models/text.js'
+import { UserCookie } from './models/usercookie.js';
 import 'dotenv/config';
 
 
@@ -13,7 +16,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
- 
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -45,55 +48,55 @@ async function main() {
 
 app.post('/data', (req, res) => {
 
- console.log("--//---//---//---//--sign in--//---//---//---//--")
+  console.log("--//---//---//---//--sign in--//---//---//---//--")
 
   console.log(req.body.email)
 
   user.findOne({ Name: req.body.name })
-  .then(data => {
-    
-   
-    if(data !== null){  
-      res.json(false)
-     
-    }else{
-      const email = req.body.email
+    .then(data => {
 
-      OTP = otpGenerator.generate(4, { upperCaseAlphabets: false, specialChars: false, lowerCaseAlphabets: false });
-      console.log("Generated:", OTP);
-    
-      let mail = 'Your 4 digit OTP is ' + OTP;
-      console.log(mail);
-    
-      var transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: 'dev.Bold2006@gmail.com',
-          pass: 'csnc qzqp zfpq dogh'
-        }
-      });
-    
-      var mailOptions = {
-        from: 'codeboldy',
-        to: email,
-        subject: 'OTP for chatterhub sign in ',
-        text: mail
-      };
-    
-      transporter.sendMail(mailOptions, function (error, info) {
-        if (error) {
-          console.log(error);
-          res.json(error)
-        } else {
-          console.log('Email sent: ' + info.response);
-          res.json(true)
-        }
-        
-      });
-    } 
-  })
 
-  
+      if (data !== null) {
+        res.json(false)
+
+      } else {
+        const email = req.body.email
+
+        OTP = otpGenerator.generate(4, { upperCaseAlphabets: false, specialChars: false, lowerCaseAlphabets: false });
+        console.log("Generated:", OTP);
+
+        let mail = 'Your 4 digit OTP is ' + OTP;
+        console.log(mail);
+
+        var transporter = nodemailer.createTransport({
+          service: 'gmail',
+          auth: {
+            user: 'dev.Bold2006@gmail.com',
+            pass: 'csnc qzqp zfpq dogh'
+          }
+        });
+
+        var mailOptions = {
+          from: 'codeboldy',
+          to: email,
+          subject: 'OTP for chatterhub sign in ',
+          text: mail
+        };
+
+        transporter.sendMail(mailOptions, function (error, info) {
+          if (error) {
+            console.log(error);
+            res.json(error)
+          } else {
+            console.log('Email sent: ' + info.response);
+            res.json(true)
+          }
+
+        });
+      }
+    })
+
+
 
 })
 
@@ -104,11 +107,13 @@ app.post('/dataCheck', (req, res) => {
 
   console.log(req.body);
 
-  let responseData = { message: 'false' };
+  
 
   if (OTP == req.body.otp) {
+    const sessionID = {
+      ID: uuidv4(),
+    }
 
-    responseData = { message: 'true' };
     const USER = new user({
       Email: req.body.email,
       Name: req.body.name,
@@ -116,28 +121,63 @@ app.post('/dataCheck', (req, res) => {
       ProfileImage: process.env.PROFILE_PIC
     });
     USER.save();
+    
+    const USERCOOKIE = new UserCookie({
 
+      ID: sessionID.ID,
+      value: req.body.name,
+      expire: new Date().getTime() + (1* 24 * 60 * 60 * 1000)
+
+    })
+    USERCOOKIE.save();
+
+    res.json(sessionID)
+
+  } else {
+    const sessionID = {
+      ID: null,
+    }
+    res.json(sessionID)
   }
-  res.json(responseData)
- })
 
-   app.post('/login', (req, res) => {
+})
 
-    console.log("--//--//--//--//--log in--//---//---//---//--")
+app.post('/login', (req, res) => {
+
+  console.log("--//--//--//--//--log in--//---//---//---//--")
 
   console.log(req.body)
 
-  user.findOne({ Name: req.body.name, Password:req.body.password })
-  .then(data => {
-    console.log(data);
-    res.json(data);
+  user.findOne({ Name: req.body.name, Password: req.body.password })
+    .then(data => {
+      if (data !== null) {
+        
+
+        const sessionID = {
+          ID: uuidv4(),
+        }
+
+        const USERCOOKIE = new UserCookie({
+
+          ID: sessionID.ID,
+          value: data.Name,
+          expire: new Date().getTime() + (1* 24 * 60 * 60 * 1000)
+
+      })
+      USERCOOKIE.save();
+
+      res.json(sessionID)
+    }else {
+      res.json(data)
+    }
+    
   })
   .catch(err => {
     console.error(err);
   });
  })
- 
- app.post('/search', (req, res) => {
+
+app.post('/search', (req, res) => {
   console.log(req.body);
   user.findOne({ Name: req.body.name })
  .then(data => {
@@ -155,6 +195,7 @@ app.post('/dataCheck', (req, res) => {
   })
  })
  app.post('/loadchats',(req,res)=>{
+
   messageProp.find({$or: [
     { from: req.body.Name },  
     {  to: req.body.Name }   
@@ -179,39 +220,41 @@ app.post('/dataCheck', (req, res) => {
  app.post('/message', (req, res) => {
   console.log(req.body)
 
-  const URL={ url:'message.html?messageTo='+ req.body.Name,}
-  
+  const URL = { url: 'message.html?messageTo=' + req.body.Name, }
+
   res.json(URL);
 
- })
- app.post('/sendMessage', (req, res) => {
+})
+app.post('/sendMessage', (req, res) => {
 
   console.log(req.body)
   const NewMessage = new messageProp({
-   
-        from: req.body.from,
-        to: req.body.to,
-        message: req.body.message,
-        time: req.body.time,   
+
+    from: req.body.from,
+    to: req.body.to,
+    message: req.body.message,
+    time: req.body.time,
 
   });
   NewMessage.save();
-  res.json({status:'done'})
- })
- app.post('/ChatHistory', (req, res) => {
- 
-  messageProp.find({ $or: [
-    { from: req.body.user1, to: req.body.user2  },  
-    { from: req.body.user2, to: req.body.user1 }   
-] })
-  .then(data => {
-    console.log(data)
-    console.log(typeof(data));
-    res.json(data)
-  })
-  
+  res.json({ status: 'done' })
+})
+app.post('/ChatHistory', (req, res) => {
 
- })
+  messageProp.find({
+    $or: [
+      { from: req.body.user1, to: req.body.user2 },
+      { from: req.body.user2, to: req.body.user1 }
+    ]
+  })
+    .then(data => {
+      console.log(data)
+      console.log(typeof (data));
+      res.json(data)
+    })
+
+
+})
 
 app.post('/updatePP', (req, res) => {
   console.log(req.body.base64URL);
@@ -231,11 +274,47 @@ app.post('/updatePP', (req, res) => {
     });
 });
 
-  app.post('/profileImage', (req, res) => {
-    user.findOne({Name:req.body.Name})
-    .then(data=>{
+app.post('/profileImage', (req, res) => {
+  user.findOne({ Name: req.body.Name })
+    .then(data => {
       res.json(data.ProfileImage)
     })
+})
+
+
+app.post('/CheckSession', (req, res) => {
+  console.log(req.body.ID)
+  UserCookie.findOne({ ID: req.body.ID })
+  .then(data=>{
+    if(data !== null){
+      console.log(data.expire)
+      const expireDate=data.expire;
+
+      const presentDateISO=new Date();
+      const presentDate = Math.floor(presentDateISO.getTime() / 1000);
+      console.log(presentDate)
+      let accessStatus={
+        Status:false
+      }
+      if(expireDate >= presentDate ){
+        accessStatus={ Status:true }
+      }
+      res.json(accessStatus);
+    }
   })
-  
- 
+})
+
+app.post('/getUser', (req, res) => {
+  console.log(req.body.ID)
+  UserCookie.findOne({ ID: req.body.ID })
+  .then(data=>{
+    console.log(data);
+    const user={
+      value:data.value
+    }
+
+    res.json(user)
+
+  })
+
+})
