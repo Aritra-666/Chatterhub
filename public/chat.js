@@ -103,7 +103,7 @@ function getUser() {
                 });
             });
           });
-    
+          document.getElementById("loaddiv").style.display="none"
           box.style.display = 'inline-block';
     
         })

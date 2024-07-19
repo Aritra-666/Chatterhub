@@ -1,9 +1,12 @@
 document.getElementById("submit").addEventListener("click", () => {
+  document.getElementById("loaddiv").style.display="flex"
   const Username = document.getElementById("username").value;
   const Password = document.getElementById("password").value;
   if (Username == "" || Password == 0) {
     alert("Enter all correct details");
   } else {
+    document.getElementById("username").disabled =true;
+    document.getElementById("password").disabled =true;
     const UserDetails = {
       name: Username,
       password: Password,
@@ -23,9 +26,13 @@ document.getElementById("submit").addEventListener("click", () => {
           setCookie('sessionID', data.ID, 365);
 
           window.location.assign("chat.html");
+          
         } else {
           alert("account not found")
+          document.getElementById("username").disabled =false;
+          document.getElementById("password").disabled =false;
         }
+        document.getElementById("loaddiv").style.display="none"
       });
   }
 });

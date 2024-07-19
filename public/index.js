@@ -4,11 +4,14 @@
 
 
 document.getElementById("submit").addEventListener("click", () => {
+    document.getElementById("loaddiv").style.display="flex"
   const Username = document.getElementById("username").value;
   const Password = document.getElementById("password").value;
   if (Username == "" || Password == 0) {
     alert("Enter all correct details");
   } else {
+    document.getElementById("username").disabled =true;
+    document.getElementById("password").disabled =true;
     const UserDetails = {
       name: Username,
       password: Password,
@@ -30,6 +33,9 @@ document.getElementById("submit").addEventListener("click", () => {
           window.location.assign("chat.html");
         } else {
           alert("account not found")
+          document.getElementById("username").disabled =false;
+          document.getElementById("password").disabled =false;
+            document.getElementById("loaddiv").style.display="none"
         }
       });
   }
@@ -44,17 +50,6 @@ function setCookie(name, value, days) {
   document.cookie = name + "=" + value + ";" + expires + ";path=/";
 }
 
-
-
-// window.addEventListener("scroll", () => {
-//   if(window.scrollY <= 100){
-//     window.scrollBy({
-//       top: 1500,
-//       left: 0,
-//       behavior: 'smooth' // This will animate the scroll
-//     });
-//   }
-// })
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -91,8 +86,6 @@ window.addEventListener("load", () => {
     }
   }
 
-  document.querySelector(".loader").style.display = "inline"
-  document.getElementById("main").style.display = "none"
   
   function getCookie(name) {
     let cookieArr = document.cookie.split(";");
@@ -125,19 +118,16 @@ window.addEventListener("load", () => {
       .then((data) => {
         console.log(data)
         if (data.Status == true) {
-          document.querySelector(".loader").style.display = "none"
-          document.getElementById("main").style.display = "flex"
+
           window.location.assign("chat.html");
         } else {
-          document.querySelector(".loader").style.display = "none"
-          document.getElementById("main").style.display = "flex"
+   
           alert("session expired")
           deleteCookie("sessionID")
         }
       });
   } else {
-    document.querySelector(".loader").style.display = "none"
-    document.getElementById("main").style.display = "flex"
+
   }
 
   runAfterDelay();
@@ -202,6 +192,10 @@ document.getElementById("Sign-submit").addEventListener("click", () => {
   } else if (length > 10) {
     alert("Username can contain maximum 10 letters")
   } else {
+       document.getElementById("email").disabled =true;
+      document.getElementById("New-username").disabled =true;
+       document.getElementById("New-password").disabled =true;
+      document.getElementById("loaddiv").style.display="flex"
     document.getElementById("sign").innerHTML = "Wait....";
     document.getElementById("sign").classList.add("flick");
     const UserDetails = {
@@ -224,13 +218,21 @@ document.getElementById("Sign-submit").addEventListener("click", () => {
 
           if (data.code == 'EENVELOPE') {
             alert("Please enter a valid Email");
+              document.getElementById("loaddiv").style.display="none"
             document.getElementById("sign").innerHTML = "Submit";
             document.getElementById("sign").classList.remove("flick");
             document.getElementById("email").value = "";
+            document.getElementById("email").disabled =false;
+      document.getElementById("New-username").disabled =false;
+       document.getElementById("New-password").disabled =false;
           } else if (data.code == 'EDNS') {
             alert("Please connect your device to internet");
+                document.getElementById("loaddiv").style.display="none"
             document.getElementById("sign").innerHTML = "Submit";
             document.getElementById("sign").classList.remove("flick");
+            document.getElementById("email").disabled =false;
+      document.getElementById("New-username").disabled =false;
+       document.getElementById("New-password").disabled =false;
           }
 
         }
@@ -238,7 +240,7 @@ document.getElementById("Sign-submit").addEventListener("click", () => {
 
           if (data) {
             console.log("username available");
-
+    document.getElementById("loaddiv").style.display="none"
             document.getElementById("signin-container").style.display = "none";
             document.getElementById("otp-container").style.display = "block";
           }
@@ -246,7 +248,10 @@ document.getElementById("Sign-submit").addEventListener("click", () => {
             document.getElementById("sign").innerHTML = "Submit";
             document.getElementById("sign").classList.remove("flick");
             alert("username taken");
-
+                document.getElementById("loaddiv").style.display="none"
+                document.getElementById("email").disabled =false;
+                document.getElementById("New-username").disabled =false;
+                 document.getElementById("New-password").disabled =false;
             document.getElementById("username").value = "";
           }
         }

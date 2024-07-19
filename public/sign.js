@@ -18,6 +18,10 @@ document.getElementById("submit").addEventListener("click", () => {
   } else if (length > 10) {
     alert("Username can contain maximum 10 letters")
   } else {
+    document.getElementById("loaddiv").style.display="flex"
+    document.getElementById("email").disabled =true;
+    document.getElementById("username").disabled =true;
+    document.getElementById("password").disabled =true;
     document.getElementById("sign").innerHTML = "Wait....";
     document.getElementById("sign").classList.add("flick");
     const UserDetails = {
@@ -43,10 +47,18 @@ document.getElementById("submit").addEventListener("click", () => {
             document.getElementById("sign").innerHTML = "Submit";
             document.getElementById("sign").classList.remove("flick");
             document.getElementById("email").value = "";
+            document.getElementById("email").disabled =false;
+    document.getElementById("username").disabled =false;
+    document.getElementById("password").disabled =false;
+    document.getElementById("loaddiv").style.display="none"
           } else if (data.code == 'EDNS') {
             alert("Please connect your device to internet");
             document.getElementById("sign").innerHTML = "Submit";
             document.getElementById("sign").classList.remove("flick");
+            document.getElementById("email").disabled =false;
+            document.getElementById("username").disabled =false;
+            document.getElementById("password").disabled =false;
+            document.getElementById("loaddiv").style.display="none"
           }
 
         }
@@ -57,12 +69,16 @@ document.getElementById("submit").addEventListener("click", () => {
 
             document.getElementById("signin-container").style.display = "none";
             document.getElementById("otp-container").style.display = "block";
+            document.getElementById("loaddiv").style.display="none"
           }
           else if (!data) {
             document.getElementById("sign").innerHTML = "Submit";
             document.getElementById("sign").classList.remove("flick");
+            document.getElementById("email").disabled =false;
+            document.getElementById("username").disabled =false;
+            document.getElementById("password").disabled =false;
             alert("username taken");
-
+document.getElementById("loaddiv").style.display="none"
             document.getElementById("username").value = "";
           }
         }
@@ -74,6 +90,8 @@ document.getElementById("submit").addEventListener("click", () => {
 
 document.getElementById("otp-submit").addEventListener("click", () => {
   let currentdate = new Date();
+  document.getElementById("otp").disabled =true;
+  document.getElementById("loaddiv").style.display="flex"
   let EnteredOTP = {
     otp: document.getElementById("otp").value,
     email: document.getElementById("email").value,
@@ -81,6 +99,7 @@ document.getElementById("otp-submit").addEventListener("click", () => {
     password: document.getElementById("password").value,
     date: currentdate
   };
+
   console.log(EnteredOTP);
   fetch("/dataCheck", {
     method: "POST",
@@ -96,9 +115,12 @@ document.getElementById("otp-submit").addEventListener("click", () => {
         console.log(data.ID)
         setCookie('sessionID', data.ID, 365);
         window.location.assign("chat.html");
+        document.getElementById("loaddiv").style.display="none"
       } else {
         alert("Wrong OTP try again");
         document.getElementById("otp").value = "";
+        document.getElementById("otp").disabled =false;
+        document.getElementById("loaddiv").style.display="none"
       }
     })
     .catch((error) => {
