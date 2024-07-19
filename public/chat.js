@@ -28,6 +28,47 @@ function getUser() {
     .then((response) => response.json())
     .then((data) => {
       
+
+
+
+
+      document.getElementById('file').addEventListener('change', function (event) {
+        const file = event.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+      
+            profiledata = {
+              Name: data.value,
+              base64URL: e.target.result
+            }
+            
+            console.log('Base64 URL:', e.target.result);
+            document.getElementById('profileimage').src = e.target.result;                                          
+            
+            fetch("/updatePP", {
+              method: "POST",
+              headers: {
+                "Content-type": "application/json",
+              },
+              body: JSON.stringify(profiledata),
+            })
+              .then((response) => response.json())
+              .then((data) => { 
+              })
+          };
+          reader.readAsDataURL(file);
+      
+        }
+      });
+
+    
+
+
+
+
+
+      
       Username = {
         Name:data.value
       }
@@ -206,36 +247,43 @@ document.getElementById('cross2-icon').addEventListener('click', () => {
 })
 
 
+document.getElementById("edit").addEventListener('click',()=>{
+  document.querySelectorAll(".chat").forEach((element) => {
+    element.style.filter = "blur(25px)"
+  })
+  document.getElementById("logo").style.filter = "blur(25px)"
+  document.getElementById("dropdown-content").style.filter = "blur(25px)"
+  document.getElementById("profilecard").style.display = "flex"
+ 
+  
+
+
+})
+document.getElementById('cross2-icon').addEventListener('click', () => {
+  document.getElementById("profilecard").style.display = "none"
+  document.getElementById("logo").style.filter = "blur(0px)"
+  document.getElementById("dropdown-content").style.filter = "blur(0px)"
+  document.querySelectorAll(".chat").forEach((element) => {
+    element.style.filter = "blur(0px)"
+  })
+})
 
 
 
 
-document.getElementById('file').addEventListener('change', function (event) {
-  const file = event.target.files[0];
-  if (file) {
-    const reader = new FileReader();
-    reader.onload = function (e) {
-
-      profiledata = {
-        Name: localStorage.getItem('user'),
-        base64URL: e.target.result
-      }
-
-      console.log('Base64 URL:', e.target.result);
-      document.getElementById('profileimage').src = e.target.result;
-      fetch("/updatePP", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(profiledata),
-      })
-        .then((response) => response.json())
-        .then((data) => { })
-    };
-    reader.readAsDataURL(file);
-
-  }
-});
 
 
+document.getElementById("settings").addEventListener('click',()=>{
+  document.getElementById("settingsBlock").style.display="flex"
+  document.getElementById("settingsList").style.display="inline"
+})
+
+document.getElementById("cross3-icon").addEventListener('click',()=>{
+    document.getElementById("settingsBlock").style.display="none"
+  document.getElementById("settingsList").style.display="none"
+})
+document.getElementById("privacy").addEventListener('click',()=>{
+  window.location.assign("privacy.html")
+
+
+})

@@ -318,3 +318,66 @@ app.post('/getUser', (req, res) => {
   })
 
 })
+
+
+app.post('/terminate', (req, res) => {
+  UserCookie.deleteMany({ value: req.body.Name})
+  .then(data=>{
+    res.json(data)
+  })
+})
+
+app.post('/sessionCount', (req, res) => {
+
+  const presentDateISO=new Date();
+  const presentDate = Math.floor(presentDateISO.getTime() / 1000);
+  console.log(presentDate)
+  UserCookie.findOne({ ID: req.body.ID })
+  .then(data=>{
+    UserCookie.find({value:data.value ,expire:{$gte:presentDate}})
+    .then(data=>{
+      console.log(data)
+      let info={
+        Length:data.length
+      }
+      res.json(info)
+    })
+  })
+
+})
+
+
+app.post('/ChangePassword', (req, res) => {
+console.log(req.body)
+
+UserCookie.findOne({ ID: req.body.ID })
+  .then(data=>{
+    console.log(data)
+    if(data !== null){
+
+      user.findOne({ Name: data.value })
+      .then(data => {
+        console.log(data);
+       if(req.body.OldPassword == data.Password){
+        console.log("correct")
+         user.updateOne({ Name: data.Name}, { $set: { Password: req.body.NewPassword } })
+         .then(data=>{
+          res.json(data)
+         })
+       }else{
+        let status={
+          acknowledged: false,
+          modifiedCount: 0,
+          upsertedId: null,
+          upsertedCount: 0,
+          matchedCount: 0
+        }
+        res.json(status)
+       }
+      })
+     
+   
+    }
+  })
+
+})

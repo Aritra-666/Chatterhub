@@ -6,7 +6,7 @@ const usercookie = new mongoose.Schema({
         ID: String,
         value: String,
         setTime:String,
-        expire:String
+        expire:Number
 
 });
 
