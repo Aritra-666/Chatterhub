@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forget Password</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet" />
+  <style>
+    body {
+      display: flex;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      width: 100vw;
+      background-color: #fff;
+      /* display: flex; */
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(45deg, grey, white);
+      font-family: chakra petch;
+      color: rgb(217, 245, 247);
+      cursor: default;
+    }
+
+    #password-container {
+      display: none;
+      position: absolute;
+      justify-content: center;
+      left: 50%;
+      top: 50%;
+      background: url(4502433.jpg);
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      border-radius: 25px;
+      transform: translate(-50%, -50%);
+      max-width: 600px;
+      width: 80vw;
+      height: 350px;
+      background-color: #ffffff6e;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: -50px 50px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    #otp-container {
+      display: none;
+      position: absolute;
+      justify-content: center;
+      left: 50%;
+      top: 50%;
+      background: url(4502433.jpg);
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      border-radius: 25px;
+      transform: translate(-50%, -50%);
+      max-width: 600px;
+      width: 80vw;
+      height: 350px;
+      background-color: #ffffff6e;
+      border-radius: 5px;
+      padding: 20px;
+      box-shadow: -50px 50px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      background: linear-gradient(to top, #00b3ff, white);
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* #signin-container input[type="text"],
+      #signin-container input[type="password"]
+       {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        background-color: #ffffff00;
+        color: aquamarine;
+      } */
+
+    h3 {
+      font-size: 1.1rem;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .flick {
+      animation: flicker 1s linear infinite running;
+    }
+
+    @keyframes flicker {
+      0% {
+        display: flex;
+      }
+
+      25% {
+        display: none;
+      }
+
+      50% {
+        display: none;
+      }
+
+      75% {
+        display: none;
+      }
+
+      100% {
+        display: flex;
+      }
+    }
+
+    #submit {
+      display: flex;
+      position: absolute;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      left: 50%;
+      bottom: 100px;
+      transform: translateX(-50%);
+      background-color: #7f72f53a;
+      color: #fff;
+      margin-top: 50px;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.5s;
+    }
+
+    #submit:hover {
+      background-color: #45a049;
+    }
+
+    #otp-submit {
+      display: flex;
+      position: absolute;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      left: 50%;
+      bottom: 100px;
+      transform: translateX(-50%);
+      background-color: #7f72f53a;
+      color: #fff;
+      margin-top: 50px;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.5s;
+    }
+
+    #otp-submit:hover {
+      background-color: #45a049;
+    }
+
+    #otp {
+      /* display: none; */
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      font-size: 1.6rem;
+      padding: 10px;
+      bottom: 50%;
+      display: inline-block;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      background-color: #ffffff00;
+      color: aquamarine;
+    }
+
+    #new-password {
+      /* display: none; */
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 300px;
+      width: 60vw;
+      font-size: 1.6rem;
+      padding: 10px;
+      bottom: 50%;
+      display: inline-block;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      background-color: #ffffff00;
+      color: aquamarine;
+    }
+
+    .loader {
+      animation: rotate 5s infinite;
+      height: 100px;
+      width: fit-content;
+      /* display: flexbox; */
+      /* justify-self: center;
+align-self: center; */
+      /* position: absolute;
+    left: 50%;
+    
+    transform: translateX(-50%) */
+    }
+
+    .loader:before,
+    .loader:after {
+      border-radius: 50%;
+      content: "";
+      display: block;
+      height: 20px;
+      width: 20px;
+    }
+
+    .loader:before {
+      animation: ball1 1s infinite;
+      background-color: #fff;
+      box-shadow: 30px 0 0 #00eaff;
+      margin-bottom: 10px;
+    }
+
+    .loader:after {
+      animation: ball2 1s infinite;
+      background-color: #00eaff;
+      box-shadow: 30px 0 0 #fff;
+    }
+
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg) scale(0.8)
+      }
+
+      50% {
+        transform: rotate(360deg) scale(1.2)
+      }
+
+      100% {
+        transform: rotate(720deg) scale(0.8)
+      }
+    }
+
+    @keyframes ball1 {
+      0% {
+        box-shadow: 30px 0 0 #00eaff;
+      }
+
+      50% {
+        box-shadow: 0 0 0 #00eaff;
+        margin-bottom: 0;
+        transform: translate(15px, 15px);
+      }
+
+      100% {
+        box-shadow: 30px 0 0 #00eaff;
+        margin-bottom: 10px;
+      }
+    }
+
+    @keyframes ball2 {
+      0% {
+        box-shadow: 30px 0 0 #fff;
+      }
+
+      50% {
+        box-shadow: 0 0 0 #fff;
+        margin-top: -20px;
+        transform: translate(15px, 15px);
+      }
+
+      100% {
+        box-shadow: 30px 0 0 #fff;
+        margin-top: 0;
+      }
+    }
+
+    #loaddiv {
+      height: 100px;
+      width: 100px;
+      display: inline;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="loaddiv"><span class="loader"></span></div>
+  <div id="otp-container">
+    <h2>Enter the OTP </h2>
+    <form id="otp-form">
+      <div class="otp-input">
+        <input placeholder="OTP" id="otp" type="text" maxlength="4" required />
+
+      </div>
+      <div id="otp-submit">Next</div>
+
+    </form>
+  </div>
+  <div id="password-container">
+    <h2>Enter new password </h2>
+    <form id="password-form">
+      <div class="otp-input">
+
+        <input placeholder="New password" id="new-password" type="password" required />
+      </div>
+
+      <div id="submit">Submit</div>
+    </form>
+  </div>
+  <script src="forget.js"></script>
+</body>
+
+</html>

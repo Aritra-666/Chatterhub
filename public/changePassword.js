@@ -20,6 +20,7 @@ document.getElementById("submit").addEventListener('click',()=>{
 if(data.acknowledged == true && data.modifiedCount == 1 ){
     alert("Password updatation sucessfull")
      document.getElementById("loaddiv").style.display="none"
+     window.close();
 }else if(data.acknowledged == false && data.modifiedCount == 0 ){
     alert("Wrong password")
         document.getElementById("loaddiv").style.display="none"
@@ -32,7 +33,10 @@ if(data.acknowledged == true && data.modifiedCount == 1 ){
 })
 
 
+document.getElementById("forget").addEventListener('click',()=>{
 
+  window.location.assign("forget.html")
+})
 
 
 

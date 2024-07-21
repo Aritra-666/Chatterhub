@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy & security</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-column: 1;
+      justify-content: center;
+      background: url(4502433.jpg);
+      /* background-size: cover; */
+      font-family: chakra petch;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    .boxes {
+      display: flex;
+      align-items: center;
+      width: 95vw;
+      height: 100px;
+      border-top: 2px solid rgb(255, 253, 253);
+      border-bottom: 2px solid rgb(255, 255, 255);
+      margin-top: 20px;
+      color: white;
+      transition: 0.5s;
+    }
+
+    .boxes:hover {
+      border-top: 2px solid rgb(44, 255, 58);
+      border-bottom: 2px solid rgb(44, 255, 58);
+      color: rgb(44, 255, 58);
+    }
+
+    p {
+      display: inline-block;
+      margin-left: 50px;
+    }
+
+    .btn-shaketext {
+      position: absolute;
+      right: 5%;
+
+      outline: none;
+      text-decoration: none;
+      border-radius: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      text-transform: uppercase;
+      height: 30px;
+      width: 115px;
+      opacity: 1;
+      background-color: #ffffff00;
+      border: 2px solid rgb(255, 255, 255);
+      color: #ffffff;
+    }
+
+    .btn-shaketext span {
+
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.7px;
+    }
+
+    .btn-shaketext:hover {
+      border: 2px solid rgb(44, 255, 58);
+      color: rgb(44, 255, 58);
+      animation: rotate 0.7s ease-in-out both;
+    }
+
+    .btn-shaketext:hover span {
+      animation: storm 0.7s ease-in-out both;
+      animation-delay: 0.06s;
+    }
+
+    @media screen and (max-width: 425px) {
+      p {
+        margin-left: 5px;
+      }
+    }
+
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg) translate3d(0, 0, 0);
+      }
+
+      25% {
+        transform: rotate(3deg) translate3d(0, 0, 0);
+      }
+
+      50% {
+        transform: rotate(-3deg) translate3d(0, 0, 0);
+      }
+
+      75% {
+        transform: rotate(1deg) translate3d(0, 0, 0);
+      }
+
+      100% {
+        transform: rotate(0deg) translate3d(0, 0, 0);
+      }
+    }
+
+    @keyframes storm {
+      0% {
+        transform: translate3d(0, 0, 0) translateZ(0);
+      }
+
+      25% {
+        transform: translate3d(4px, 0, 0) translateZ(0);
+      }
+
+      50% {
+        transform: translate3d(-3px, 0, 0) translateZ(0);
+      }
+
+      75% {
+        transform: translate3d(2px, 0, 0) translateZ(0);
+      }
+
+      100% {
+        transform: translate3d(0, 0, 0) translateZ(0);
+      }
+    }
+
+    .loader {
+      animation: rotateload 5s infinite;
+      height: 50px;
+      width: 50px;
+      /* display: flexbox; */
+      /* justify-self: center;
+align-self: center; */
+      /* position: absolute;
+    left: 50%;
+    
+    transform: translateX(-50%) */
+    }
+
+    .loader:before,
+    .loader:after {
+      border-radius: 50%;
+      content: "";
+      display: block;
+      height: 20px;
+      width: 20px;
+    }
+
+    .loader:before {
+      animation: ball1 1s infinite;
+      background-color: #fff;
+      box-shadow: 30px 0 0 #00eaff;
+      margin-bottom: 10px;
+    }
+
+    .loader:after {
+      animation: ball2 1s infinite;
+      background-color: #00eaff;
+      box-shadow: 30px 0 0 #fff;
+    }
+
+    @keyframes rotateload {
+      0% {
+        transform: rotate(0deg) scale(0.8)
+      }
+
+      50% {
+        transform: rotate(360deg) scale(1.2)
+      }
+
+      100% {
+        transform: rotate(720deg) scale(0.8)
+      }
+    }
+
+    @keyframes ball1 {
+      0% {
+        box-shadow: 30px 0 0 #00eaff;
+      }
+
+      50% {
+        box-shadow: 0 0 0 #00eaff;
+        margin-bottom: 0;
+        transform: translate(15px, 15px);
+      }
+
+      100% {
+        box-shadow: 30px 0 0 #00eaff;
+        margin-bottom: 10px;
+      }
+    }
+
+    @keyframes ball2 {
+      0% {
+        box-shadow: 30px 0 0 #fff;
+      }
+
+      50% {
+        box-shadow: 0 0 0 #fff;
+        margin-top: -20px;
+        transform: translate(15px, 15px);
+      }
+
+      100% {
+        box-shadow: 30px 0 0 #fff;
+        margin-top: 0;
+      }
+    }
+
+    #loaddiv {
+      height: 100px;
+      width: 100px;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+    }
+
+    #report:hover {
+      border-top: 2px solid rgb(255, 4, 0);
+      border-bottom: 2px solid rgb(255, 4, 0);
+      color: rgb(255, 4, 0);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="loaddiv"><span class="loader"></span></div>
+  <div id="main">
+    <div class="boxes" id="session">
+      <p id="sessioCount"></p>
+      <button id="Terminate" class="btn-shaketext">
+        <span>Terminate</span>
+      </button>
+    </div>
+    <div class="boxes" id="password">
+      <p>Current password : *****</p>
+      <button id="changePassword" class="btn-shaketext">
+        <span>Change</span>
+      </button>
+    </div>
+    <div class="boxes" id="report">
+      <p>Report</p>
+    </div>
+  </div>
+  <script src="privacy.js"></script>
+</body>
+
+</html>

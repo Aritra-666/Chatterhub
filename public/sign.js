@@ -52,7 +52,7 @@ document.getElementById("submit").addEventListener("click", () => {
     document.getElementById("password").disabled =false;
     document.getElementById("loaddiv").style.display="none"
           } else if (data.code == 'EDNS') {
-            alert("Please connect your device to internet");
+            alert("Sorry something went wrong, Please try later");
             document.getElementById("sign").innerHTML = "Submit";
             document.getElementById("sign").classList.remove("flick");
             document.getElementById("email").disabled =false;

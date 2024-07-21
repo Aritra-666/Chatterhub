@@ -381,3 +381,92 @@ UserCookie.findOne({ ID: req.body.ID })
   })
 
 })
+
+
+app.post('/getEmail', (req, res) => {
+ console.log(req.body.ID)
+ UserCookie.findOne({ ID: req.body.ID })
+ .then(data=>{
+  user.findOne({Name:data.value})
+  .then(data=>{
+    console.log(data.Email)
+    res.json(data.Email)
+  })
+ })
+})
+
+
+app.post('/sendOTP', (req, res) => {
+
+  const email = req.body.id
+
+  OTP = otpGenerator.generate(4, { upperCaseAlphabets: false, specialChars: false, lowerCaseAlphabets: false });
+  console.log("Generated:", OTP);
+
+  let mail = 'Your 4 digit OTP is ' + OTP;
+  console.log(mail);
+
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'dev.Bold2006@gmail.com',
+      pass: 'csnc qzqp zfpq dogh'
+    }
+  });
+
+  var mailOptions = {
+    from: 'codeboldy',
+    to: email,
+    subject: 'OTP for chatterhub password reset ',
+    text: mail
+  };
+
+  transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error);
+      res.json(error)
+    } else {
+      console.log('Email sent: ' + info.response);
+      res.json(true)
+    }
+
+  });
+
+})
+
+
+app.post('/resetPassword', (req, res) => {
+
+console.log(OTP)
+
+UserCookie.findOne({ ID: req.body.ID })
+  .then(data=>{
+    console.log(data)
+    if(data !== null){
+
+      user.findOne({ Name: data.value })
+      .then(data => {
+        console.log(data);
+       if(req.body.OTP == OTP){
+        console.log("correct")
+         user.updateOne({ Name: data.Name}, { $set: { Password: req.body.NewPassword } })
+         .then(data=>{
+          res.json(data)
+         })
+       }else{
+        let status={
+          acknowledged: false,
+          modifiedCount: 0,
+          upsertedId: null,
+          upsertedCount: 0,
+          matchedCount: 0
+        }
+        res.json(status)
+       }
+      })
+     
+   
+    }
+  })
+
+})
